@@ -1,9 +1,9 @@
-package com.bytebank;
+package br.com.bytebank;
 
 
-import com.bytebank.model.Conta;
-import com.bytebank.model.Cliente;
-import com.bytebank.service.ContaServico;
+import br.com.bytebank.modelo.Cliente;
+import br.com.bytebank.servico.ContaServico;
+import br.com.bytebank.modelo.Conta;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

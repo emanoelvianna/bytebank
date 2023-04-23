@@ -1,4 +1,4 @@
-package com.bytebank.model;
+package br.com.bytebank.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

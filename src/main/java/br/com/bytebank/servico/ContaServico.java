@@ -1,6 +1,6 @@
-package com.bytebank.service;
+package br.com.bytebank.servico;
 
-import com.bytebank.model.Conta;
+import br.com.bytebank.modelo.Conta;
 
 import java.math.BigDecimal;
 
