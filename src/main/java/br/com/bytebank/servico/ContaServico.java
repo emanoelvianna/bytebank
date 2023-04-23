@@ -11,7 +11,7 @@ public class ContaServico {
         return result;
     }
 
-    public BigDecimal withdraw(Conta conta, BigDecimal value) {
+    public BigDecimal sacar(Conta conta, BigDecimal value) {
         BigDecimal result = conta.getSaldo().add(value);
         conta.setSaldo(result);
         return result;

@@ -18,8 +18,8 @@ public class Principal {
                 "vianna@gmail.com");
         Conta conta = new Conta(emanoel);
 
-        ContaServico service = new ContaServico();
-        service.depositar(conta, new BigDecimal(100));
+        ContaServico servico = new ContaServico();
+        servico.depositar(conta, new BigDecimal(100));
 
         System.out.println(conta.toString());
     }
