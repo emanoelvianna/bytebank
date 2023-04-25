@@ -8,6 +8,7 @@ import br.com.bytebank.modelo.Gerente;
 import java.math.BigDecimal;
 
 public class ContaServico {
+    
     public BigDecimal depositar(Autenticavel autenticavel, Conta conta, BigDecimal valor) {
         if(this.login(autenticavel)) {
             BigDecimal result = conta.getSaldo().add(valor);
@@ -30,5 +31,4 @@ public class ContaServico {
         String senha = new String("laranja123");
         return autenticavel.autentica(senha);
     }
-
 }
