@@ -2,19 +2,22 @@ package br.com.bytebank.modelo;
 
 import java.time.LocalDate;
 
-public class Cliente {
+public class Cliente implements Autenticavel {
     private String nome;
     private String documento;
     private LocalDate dtNascimento;
     private String endereco;
     private String email;
 
-    public Cliente(String nome, String documento, LocalDate dtNascimento, String endereco, String email) {
+    private String senha;
+
+    public Cliente(String nome, String documento, LocalDate dtNascimento, String endereco, String email, String senha) {
         this.nome = nome;
         this.documento = documento;
         this.dtNascimento = dtNascimento;
         this.endereco = endereco;
         this.email = email;
+        this.senha = senha;
     }
 
     public String getNome() {
@@ -55,5 +58,10 @@ public class Cliente {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public Boolean autentica(String senha) {
+        return this.senha.equals(senha);
     }
 }
