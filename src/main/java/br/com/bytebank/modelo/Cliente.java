@@ -19,6 +19,11 @@ public class Cliente implements Autenticavel {
         this.senha = senha;
     }
 
+    @Override
+    public Boolean autentica(String senha) {
+        return this.senha.equals(senha);
+    }
+
     public String getNome() {
         return nome;
     }
@@ -59,8 +64,4 @@ public class Cliente implements Autenticavel {
         this.email = email;
     }
 
-    @Override
-    public Boolean autentica(String senha) {
-        return this.senha.equals(senha);
-    }
 }
