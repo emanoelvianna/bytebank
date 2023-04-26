@@ -8,7 +8,6 @@ public class Cliente implements Autenticavel {
     private LocalDate dtNascimento;
     private String endereco;
     private String email;
-
     private String senha;
 
     public Cliente(String nome, String documento, LocalDate dtNascimento, String endereco, String email, String senha) {

@@ -3,7 +3,7 @@ package br.com.bytebank.modelo;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Conta {
+public abstract class Conta {
 
     private Cliente cliente;
     private BigDecimal saldo;
@@ -43,5 +43,14 @@ public class Conta {
 
     public void setDtCriacao(LocalDate dtCriacao) {
         this.dtCriacao = dtCriacao;
+    }
+
+    @Override
+    public String toString() {
+        return "Conta{" +
+                "cliente=" + cliente.getNome() +
+                ", saldo=" + saldo +
+                ", dtCriacao=" + dtCriacao +
+                '}';
     }
 }

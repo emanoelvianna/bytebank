@@ -2,16 +2,14 @@ package br.com.bytebank.modelo;
 
 import java.math.BigDecimal;
 
-public class Consignado {
+public class Credito {
 
     private BigDecimal margem;
     private BigDecimal valor;
-    private String empregador;
 
-    public Consignado(BigDecimal margem, BigDecimal valor, String empregador) {
+    public Credito(BigDecimal margem, BigDecimal valor) {
         this.margem = margem;
         this.valor = valor;
-        this.empregador = empregador;
     }
 
     public BigDecimal getMargem() {
@@ -28,13 +26,5 @@ public class Consignado {
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
-    }
-
-    public String getEmpregador() {
-        return empregador;
-    }
-
-    public void setEmpregador(String empregador) {
-        this.empregador = empregador;
     }
 }
