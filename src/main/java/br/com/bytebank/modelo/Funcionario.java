@@ -6,7 +6,6 @@ public abstract class Funcionario {
 
     private String nome;
     private String documento;
-
     private BigDecimal salario;
 
     public Funcionario(String nome, String documento, BigDecimal salario) {
@@ -31,7 +30,5 @@ public abstract class Funcionario {
         this.documento = documento;
     }
 
-    public BigDecimal getSalario() {
-        return salario;
-    }
+    public BigDecimal getSalario() { return this.salario; }
 }

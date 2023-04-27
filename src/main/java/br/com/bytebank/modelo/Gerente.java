@@ -11,17 +11,17 @@ public class Gerente extends Funcionario implements Autenticavel {
         this.senha = senha;
     }
 
+    @Override
+    public Boolean autentica(String senha) {
+        return this.senha.equals(senha);
+    }
+
     public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    @Override
-    public Boolean autentica(String senha) {
-        return this.senha.equals(senha);
     }
 
 }

@@ -1,10 +1,12 @@
 package br.com.bytebank.modelo;
 
-import java.math.BigDecimal;
-
 public class Produto<T> {
 
     private T produto;
+
+    public Produto(T produto) {
+        this.produto = produto;
+    }
 
     public T getProduto() {
         return produto;
