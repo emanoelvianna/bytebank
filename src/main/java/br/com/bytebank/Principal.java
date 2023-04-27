@@ -8,6 +8,7 @@ import br.com.bytebank.servico.ProdutoServico;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.*;
 
 public class Principal {
 
@@ -42,6 +43,17 @@ public class Principal {
         produtoServico.adicionarProduto(consignado);
         produtoServico.adicionarProduto(finciamento);
         produtoServico.adicionarProduto(credito);
+
+        List<Cliente> clientes = new ArrayList<>();
+        clientes.add(emanoel);
+
+        Optional<Cliente> clienteEmanoel = Optional.of(emanoel);
+        clienteEmanoel.ifPresent(c -> c.getDocumento());
+
+        if(emanoel != null) {
+            emanoel.getDocumento();
+        }
+
     }
 
 }

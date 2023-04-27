@@ -2,7 +2,7 @@ package br.com.bytebank.modelo;
 
 import java.time.LocalDate;
 
-public class Cliente implements Autenticavel {
+public class Cliente implements Autenticavel, Comparable<Cliente> {
     private String nome;
     private String documento;
     private LocalDate dtNascimento;
@@ -64,4 +64,14 @@ public class Cliente implements Autenticavel {
         this.email = email;
     }
 
+    @Override
+    public int compareTo(Cliente cliente) {
+        if(this.dtNascimento.isBefore(cliente.getDtNascimento())) {
+            return -1;
+        }
+        if(this.dtNascimento.isAfter(cliente.getDtNascimento())) {
+            return 1;
+        }
+        return 0;
+    }
 }
