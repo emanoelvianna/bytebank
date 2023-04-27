@@ -2,7 +2,7 @@ package br.com.bytebank.modelo;
 
 import java.math.BigDecimal;
 
-public abstract class Funcionario {
+public abstract class Funcionario implements Comparable <Funcionario> {
 
     private String nome;
     private String documento;
@@ -30,5 +30,18 @@ public abstract class Funcionario {
         this.documento = documento;
     }
 
-    public BigDecimal getSalario() { return this.salario; }
+    public BigDecimal getSalario() {
+        return this.salario;
+    }
+    @Override
+    public int compareTo(Funcionario funcionario) {
+        if (this.salario.compareTo(funcionario.getSalario()) < 0) {
+            return -1;
+        } else if (this.salario.compareTo(funcionario.getSalario()) > 0) {
+            return 1;
+        } else {
+            return 0;
+        }
+    }
 }
+
