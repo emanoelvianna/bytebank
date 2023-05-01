@@ -5,7 +5,6 @@ import br.com.bytebank.modelo.Cliente;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 public class ClienteServico {
 
@@ -15,7 +14,7 @@ public class ClienteServico {
         this.clientes = new ArrayList<>();
     }
 
-    public Boolean addCliente(Cliente cliente) {
+    public Boolean adicionar(Cliente cliente) {
         return this.clientes.add(cliente);
     }
 
@@ -23,21 +22,18 @@ public class ClienteServico {
         return this.clientes;
     }
 
-    public Cliente getCliente(String documento) {
-
-        for(Cliente cliente : clientes) {
-            if(cliente.getDocumento().equals(documento)) {
-                return cliente;
-            }
-        }
-
-        return this.clientes.stream().filter(cliente -> cliente.getDocumento().equals(documento)).findFirst().orElse(null);
-    }
-
-    public List<Cliente> getClienteByDtNascimento() {
+    public List<Cliente> listarByDtNascimento() {
         List<Cliente> copia = new ArrayList<>(this.clientes);
         Collections.sort(copia);
         return copia;
+    }
+
+    public Cliente getCliente(String documento) {
+        return this.clientes
+                .stream()
+                .filter(cliente -> cliente.getDocumento().equals(documento))
+                .findFirst()
+                .orElse(null);
     }
 
 }

@@ -24,6 +24,17 @@ public class Cliente implements Autenticavel, Comparable<Cliente> {
         return this.senha.equals(senha);
     }
 
+    @Override
+    public int compareTo(Cliente cliente) {
+        if (this.dtNascimento.isBefore(cliente.getDtNascimento())) {
+            return -1;
+        }
+        if (this.dtNascimento.isAfter(cliente.getDtNascimento())) {
+            return 1;
+        }
+        return 0;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -62,16 +73,5 @@ public class Cliente implements Autenticavel, Comparable<Cliente> {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    @Override
-    public int compareTo(Cliente cliente) {
-        if(this.dtNascimento.isBefore(cliente.getDtNascimento())) {
-            return -1;
-        }
-        if(this.dtNascimento.isAfter(cliente.getDtNascimento())) {
-            return 1;
-        }
-        return 0;
     }
 }

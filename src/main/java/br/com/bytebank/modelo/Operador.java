@@ -10,11 +10,13 @@ public class Operador extends Funcionario {
         this.nCaixa = nCaixa;
     }
 
-    public Integer getnCaixa() {
-        return nCaixa;
-    }
-
-    public void setnCaixa(Integer nCaixa) {
-        this.nCaixa = nCaixa;
+    @Override
+    public int compareTo(Funcionario funcionario) {
+        if(this.getSalario().compareTo(funcionario.getSalario()) < 0) {
+            return -1;
+        } else if(this.getSalario().compareTo(funcionario.getSalario()) > 0) {
+            return 1;
+        }
+        return 0;
     }
 }

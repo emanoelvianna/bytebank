@@ -8,7 +8,9 @@ import br.com.bytebank.servico.ProdutoServico;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 public class Principal {
 
@@ -50,7 +52,7 @@ public class Principal {
         Optional<Cliente> clienteEmanoel = Optional.of(emanoel);
         clienteEmanoel.ifPresent(c -> c.getDocumento());
 
-        if(emanoel != null) {
+        if (emanoel != null) {
             emanoel.getDocumento();
         }
 
