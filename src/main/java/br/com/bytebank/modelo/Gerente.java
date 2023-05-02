@@ -16,12 +16,13 @@ public class Gerente extends Funcionario implements Autenticavel {
         return this.senha.equals(senha);
     }
 
-    public String getSenha() {
-        return senha;
+    @Override
+    public int compareTo(Funcionario funcionario) {
+        if (this.getSalario().compareTo(funcionario.getSalario()) < 0) {
+            return -1;
+        } else if (this.getSalario().compareTo(funcionario.getSalario()) > 0) {
+            return 1;
+        }
+        return 0;
     }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
 }
