@@ -9,6 +9,7 @@ import br.com.bytebank.servico.ProdutoServico;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,24 +39,18 @@ public class Principal {
         IRServico irServico = new IRServico();
         irServico.calcularIR(gerente);
 
-        Produto<Consignado> consignado = new Produto<>(new Consignado(new BigDecimal(500), new BigDecimal(500), "Matera"));
-        Produto<Finciamento> finciamento = new Produto<>(new Finciamento(new BigDecimal(500), new BigDecimal(200)));
-        Produto<Credito> credito = new Produto<>(new Credito(new BigDecimal(500), new BigDecimal(200)));
         ProdutoServico produtoServico = new ProdutoServico();
-        produtoServico.adicionarProduto(consignado);
-        produtoServico.adicionarProduto(finciamento);
-        produtoServico.adicionarProduto(credito);
+        Consignado consignado = new Consignado(new BigDecimal(500), new BigDecimal(500), "Matera");
+        Produto<Consignado> pConsignado = new Produto<>("Consignado", consignado);
+        produtoServico.adicionarProduto(pConsignado);
 
-        List<Cliente> clientes = new ArrayList<>();
-        clientes.add(emanoel);
+        Finciamento finciamento = new Finciamento(new BigDecimal(500), new BigDecimal(200));
+        Produto<Finciamento> pFinciamento = new Produto<>("Finciamento", finciamento);
+        produtoServico.adicionarProduto(pFinciamento);
 
-        Optional<Cliente> clienteEmanoel = Optional.of(emanoel);
-        clienteEmanoel.ifPresent(c -> c.getDocumento());
-
-        if (emanoel != null) {
-            emanoel.getDocumento();
-        }
-
+        Credito credito = new Credito(new BigDecimal(500), new BigDecimal(200));
+        Produto<Credito> pCredito = new Produto<>("Credito", credito);
+        produtoServico.adicionarProduto(pCredito);
     }
 
 }
