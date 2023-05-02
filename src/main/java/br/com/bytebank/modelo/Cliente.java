@@ -1,6 +1,7 @@
 package br.com.bytebank.modelo;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class Cliente implements Autenticavel, Comparable<Cliente> {
     private String nome;
@@ -9,6 +10,7 @@ public class Cliente implements Autenticavel, Comparable<Cliente> {
     private String endereco;
     private String email;
     private String senha;
+    private List<Produto> produtos;
 
     public Cliente(String nome, String documento, LocalDate dtNascimento, String endereco, String email, String senha) {
         this.nome = nome;
