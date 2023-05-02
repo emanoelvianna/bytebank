@@ -1,5 +1,6 @@
 package br.com.bytebank.modelo;
 
+import javax.persistence.Entity;
 import java.time.LocalDate;
 import java.util.List;
 
