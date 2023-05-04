@@ -22,7 +22,7 @@ public class FuncionarioServico {
                 .orElse(null);
     }
 
-    public List<Funcionario> getFuncionariosOrdenadosPorSalario() {
+    public List<Funcionario> getFuncionariosBySalario() {
         List<Funcionario> copia = new ArrayList<>(this.funcionarios);
         Collections.sort(copia);
         return copia;

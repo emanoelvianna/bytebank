@@ -1,61 +1,21 @@
 package br.com.bytebank;
 
 
-import br.com.bytebank.modelo.*;
-import br.com.bytebank.servico.ContaServico;
-import br.com.bytebank.servico.IRServico;
-import br.com.bytebank.servico.ProdutoServico;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
+@SpringBootApplication
 public class Principal {
 
     public static void main(String[] args) {
-        Cliente emanoel = new Cliente("Emanoel Vianna",
-                "142.135.090-44",
-                LocalDate.of(1993, 1, 22),
-                "91270-010",
-                "vianna@gmail.com", "laranja123");
-        Conta conta = new ContaCorrente(emanoel);
-        conta.setSaldo(new BigDecimal(1000)); // TODO: REMOVER MÉTODO SET
+        SpringApplication.run(Principal.class, args);
+    }
 
-        System.out.println(conta.toString());
-
-        ContaServico servico = new ContaServico();
-        servico.depositar(emanoel, conta, new BigDecimal(100));
-
-        System.out.println(conta.toString());
-
-        Gerente gerente = new Gerente("Pedro Silva",
-                "896.933.390-88",
-                new BigDecimal(5000),
-                "laranja123");
-
-        IRServico irServico = new IRServico();
-        irServico.calcularIR(gerente);
-
-        Produto<Consignado> consignado = new Produto<>(new Consignado(new BigDecimal(500), new BigDecimal(500), "Matera"));
-        Produto<Finciamento> finciamento = new Produto<>(new Finciamento(new BigDecimal(500), new BigDecimal(200)));
-        Produto<Credito> credito = new Produto<>(new Credito(new BigDecimal(500), new BigDecimal(200)));
-        ProdutoServico produtoServico = new ProdutoServico();
-        produtoServico.adicionarProduto(consignado);
-        produtoServico.adicionarProduto(finciamento);
-        produtoServico.adicionarProduto(credito);
-
-        List<Cliente> clientes = new ArrayList<>();
-        clientes.add(emanoel);
-
-        Optional<Cliente> clienteEmanoel = Optional.of(emanoel);
-        clienteEmanoel.ifPresent(c -> c.getDocumento());
-
-        if (emanoel != null) {
-            emanoel.getDocumento();
-        }
-
+    @Bean
+    public CommandLineRunner helloWord() {
+        return args -> System.out.println("Olá mundo");
     }
 
 }
