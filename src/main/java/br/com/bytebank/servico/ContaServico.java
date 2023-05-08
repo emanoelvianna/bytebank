@@ -13,7 +13,7 @@ public class ContaServico {
             conta.setSaldo(result);
             return result;
         }
-        return null;
+        return null; // TODO: MELHORAR!
     }
 
     public BigDecimal sacar(Autenticavel autenticavel, Conta conta, BigDecimal value) {
@@ -26,7 +26,7 @@ public class ContaServico {
     }
 
     private Boolean login(Autenticavel autenticavel) {
-        String senha = new String("laranja123");
+        String senha = new String("laranja123"); // TODO: SENHA DE ENTRADA
         return autenticavel.autentica(senha);
     }
 }
