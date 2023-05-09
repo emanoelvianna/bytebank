@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 
 public class ContaServico {
 
+    private FuncionarioServico servico;
+
     public BigDecimal depositar(Autenticavel autenticavel, Conta conta, BigDecimal valor) {
         if (this.login(autenticavel)) {
             BigDecimal result = conta.getSaldo().add(valor);
