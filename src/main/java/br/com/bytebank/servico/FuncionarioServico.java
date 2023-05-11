@@ -8,7 +8,11 @@ import java.util.List;
 
 public class FuncionarioServico {
 
-    private List<Funcionario> funcionarios = new ArrayList<>();
+    private List<Funcionario> funcionarios;
+
+    public FuncionarioServico() {
+        this.funcionarios = new ArrayList<>();
+    }
 
     public void adicionar(Funcionario funcionario) {
         this.funcionarios.add(funcionario);
@@ -26,6 +30,10 @@ public class FuncionarioServico {
         List<Funcionario> copia = new ArrayList<>(this.funcionarios);
         Collections.sort(copia);
         return copia;
+    }
+
+    public List<Funcionario> listar() {
+        return this.funcionarios;
     }
 
 }

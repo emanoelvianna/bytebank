@@ -3,7 +3,6 @@ package br.com.bytebank.servico;
 import br.com.bytebank.modelo.*;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
@@ -15,7 +14,6 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ContaServicoTest {
@@ -40,18 +38,32 @@ public class ContaServicoTest {
         this.conta = new ContaCorrente(this.cliente);
     }
 
-    @DisplayName("Depositar metodo deve retornar instancia BigDecimal")
+    @DisplayName("depositar metodo deve retornar instancia BigDecimal")
     @Test
     public void depositar_metodo_deve_retornar_instancia_BigDecimal() {
         Assert.assertThat(this.servico.depositar(this.gerente, this.conta, new BigDecimal(100)), instanceOf(BigDecimal.class));
     }
 
-    @DisplayName("Depositar metodo deve despostiar valor na conta quando chamado")
+    @DisplayName("depositar metodo deve despositar valor na conta quando chamado")
     @Test
-    public void depositar_metodo_deve_despostiar_valor_na_conta_quando_metodo_add_chamado() {
+    public void depositar_metodo_deve_despositar_valor_quando_chamado() {
         this.servico.depositar(this.gerente, this.conta, new BigDecimal(100));
 
         Assert.assertTrue(this.conta.getSaldo().equals(new BigDecimal(100)));
     }
 
+    @DisplayName("sacar metodo deve retornar instancia BigDecimal")
+    @Test
+    public void sacar_metodo_deve_retornar_instancia_BigDecimal() {
+        Assert.assertThat(this.servico.sacar(this.gerente, this.conta, new BigDecimal(100)), instanceOf(BigDecimal.class));
+    }
+
+    @DisplayName("scar metodo deve despositar valor na conta quando chamado")
+    @Test
+    public void sacar_metodo_deve_sacar_valor_quando_chamado() {
+        this.servico.depositar(this.gerente, this.conta, new BigDecimal(100));
+        this.servico.sacar(this.gerente, this.conta, new BigDecimal(50));
+
+        Assert.assertTrue(this.conta.getSaldo().equals(new BigDecimal(50)));
+    }
 }

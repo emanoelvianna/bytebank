@@ -13,9 +13,9 @@ public class Operador extends Funcionario {
     @Override
     public int compareTo(Funcionario funcionario) {
         if (this.getSalario().compareTo(funcionario.getSalario()) < 0) {
-            return -1;
-        } else if (this.getSalario().compareTo(funcionario.getSalario()) > 0) {
             return 1;
+        } else if (this.getSalario().compareTo(funcionario.getSalario()) > 0) {
+            return -1;
         }
         return 0;
     }
