@@ -13,20 +13,20 @@ public class ContaServico {
             conta.setSaldo(result);
             return result;
         }
-        return null;
+        return null; // TODO: DEVERIAMOS JOGAR UMA EXCEÇÃO!!!
     }
 
     public BigDecimal sacar(Autenticavel autenticavel, Conta conta, BigDecimal value) {
         if (this.login(autenticavel)) {
-            BigDecimal result = conta.getSaldo().add(value);
+            BigDecimal result = conta.getSaldo().subtract(value);
             conta.setSaldo(result);
             return result;
         }
-        return null;
+        return null; // TODO: DEVERIAMOS JOGAR UMA EXCEÇÃO!!!
     }
 
     private Boolean login(Autenticavel autenticavel) {
-        String senha = new String("laranja123");
+        String senha = new String("laranja123"); // TODO: SENHA DE ENTRADA
         return autenticavel.autentica(senha);
     }
 }
