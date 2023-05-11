@@ -1,5 +1,6 @@
 package br.com.bytebank.servico;
 
+import br.com.bytebank.modelo.Conta;
 import br.com.bytebank.modelo.Funcionario;
 import br.com.bytebank.modelo.Gerente;
 import br.com.bytebank.modelo.Operador;
