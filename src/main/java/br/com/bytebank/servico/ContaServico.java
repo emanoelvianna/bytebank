@@ -2,10 +2,28 @@ package br.com.bytebank.servico;
 
 import br.com.bytebank.modelo.Autenticavel;
 import br.com.bytebank.modelo.Conta;
+import br.com.bytebank.repository.ContaRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 
+@Service
 public class ContaServico {
+
+    private ContaRepository repository;
+
+    public ContaServico(ContaRepository repository) {
+        this.repository = repository;
+    }
+
+    public Conta criar() { // TODO: DESENVOLVER
+        return null;
+    }
+
+    public Conta getConta() { // TODO: DESENVOLVER
+        return null;
+    }
 
     public BigDecimal depositar(Autenticavel autenticavel, Conta conta, BigDecimal valor) {
         if (this.login(autenticavel)) {

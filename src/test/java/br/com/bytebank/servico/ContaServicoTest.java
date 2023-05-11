@@ -7,21 +7,19 @@ import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ContaServicoTest {
 
     @InjectMocks
     private ContaServico servico;
-    @Mock
-    private FuncionarioServico funcionarioServico;
     private Autenticavel gerente;
     private Conta conta;
     private Cliente cliente;
