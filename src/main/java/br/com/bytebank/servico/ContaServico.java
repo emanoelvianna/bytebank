@@ -3,7 +3,6 @@ package br.com.bytebank.servico;
 import br.com.bytebank.modelo.Autenticavel;
 import br.com.bytebank.modelo.Conta;
 import br.com.bytebank.repository.ContaRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;

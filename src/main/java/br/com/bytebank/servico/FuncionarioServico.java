@@ -1,11 +1,13 @@
 package br.com.bytebank.servico;
 
 import br.com.bytebank.modelo.Funcionario;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+@Service
 public class FuncionarioServico {
 
     private List<Funcionario> funcionarios;

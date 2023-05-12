@@ -1,8 +1,13 @@
 package br.com.bytebank.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Setter
+@Getter
 public abstract class Conta {
 
     private Cliente cliente;

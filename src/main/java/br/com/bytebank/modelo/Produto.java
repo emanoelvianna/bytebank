@@ -1,5 +1,9 @@
 package br.com.bytebank.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
 public class Produto<T> {
 
     private String nome;

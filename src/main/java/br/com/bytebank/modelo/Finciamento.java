@@ -1,7 +1,12 @@
 package br.com.bytebank.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 
+@Setter
+@Getter
 public class Finciamento {
 
     private BigDecimal margem;
