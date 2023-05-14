@@ -1,17 +1,13 @@
 package br.com.bytebank.modelo;
 
-import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
 
-@Builder
-@Setter
-@Getter
+@Data
 public class Cliente implements Autenticavel, Comparable<Cliente> {
+
     private String nome;
     private String documento;
     private LocalDate dtNascimento;

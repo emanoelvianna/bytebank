@@ -1,12 +1,10 @@
 package br.com.bytebank.servico;
 
-import br.com.bytebank.modelo.Conta;
 import br.com.bytebank.modelo.Funcionario;
 import br.com.bytebank.modelo.Gerente;
 import br.com.bytebank.modelo.Operador;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
@@ -17,7 +15,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.hamcrest.CoreMatchers.is;
 
 @RunWith(MockitoJUnitRunner.class)
 public class FuncionarioServicoTest {

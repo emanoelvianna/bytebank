@@ -1,7 +1,14 @@
 package br.com.bytebank.modelo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.experimental.SuperBuilder;
+
 import java.math.BigDecimal;
 
+@Data
+@SuperBuilder
+@AllArgsConstructor
 public class Gerente extends Funcionario implements Autenticavel {
 
     private String senha;

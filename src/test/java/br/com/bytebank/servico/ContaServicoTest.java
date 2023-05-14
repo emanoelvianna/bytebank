@@ -1,25 +1,30 @@
 package br.com.bytebank.servico;
 
 import br.com.bytebank.modelo.*;
+import br.com.bytebank.repository.ContaRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class ContaServicoTest {
 
     @InjectMocks
     private ContaServico servico;
+    @Mock
+    private ContaRepository repository;
     private Autenticavel gerente;
     private Conta conta;
     private Cliente cliente;
@@ -34,6 +39,13 @@ public class ContaServicoTest {
                 "emanoel@gmail",
                 "laranja123");
         this.conta = new ContaCorrente(this.cliente);
+    }
+
+    @Test
+    public void getConta_metodo_deve_retornar_conta_quando_cliente_existir() {
+        when(this.repository.getContaByDocumento(Mockito.anyString())).thenReturn(this.conta);
+
+        Assert.assertThat(this.servico.getDocumento("01324596"), instanceOf(Conta.class));
     }
 
     @DisplayName("depositar metodo deve retornar instancia BigDecimal")
