@@ -1,40 +1,29 @@
 package br.com.bytebank.modelo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Entity
+@Table(name = "CONSIGNADO")
+@Data
+@AllArgsConstructor
 public class Consignado {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "OID_CONSIGNADO")
+    private Long id;
+
+    @Column(name = "MARGEM", length = 35, precision = 2, nullable = false)
     private BigDecimal margem;
+
+    @Column(name = "VALOR", length = 35, precision = 2, nullable = false)
     private BigDecimal valor;
+
+    @Column(name = "EMPREGADOR", length = 20, nullable = false)
     private String empregador;
 
-    public Consignado(BigDecimal margem, BigDecimal valor, String empregador) {
-        this.margem = margem;
-        this.valor = valor;
-        this.empregador = empregador;
-    }
-
-    public BigDecimal getMargem() {
-        return margem;
-    }
-
-    public void setMargem(BigDecimal margem) {
-        this.margem = margem;
-    }
-
-    public BigDecimal getValor() {
-        return valor;
-    }
-
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
-
-    public String getEmpregador() {
-        return empregador;
-    }
-
-    public void setEmpregador(String empregador) {
-        this.empregador = empregador;
-    }
 }

@@ -1,8 +1,16 @@
 package br.com.bytebank.modelo;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.experimental.SuperBuilder;
+
 import java.math.BigDecimal;
 
+@Data
+@SuperBuilder
+@AllArgsConstructor
 public class Operador extends Funcionario {
+
     private Integer nCaixa;
 
     public Operador(String nome, String documento, BigDecimal salario, Integer nCaixa) {
