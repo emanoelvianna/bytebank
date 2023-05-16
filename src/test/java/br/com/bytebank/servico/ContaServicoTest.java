@@ -10,12 +10,14 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -46,6 +48,15 @@ public class ContaServicoTest {
         when(this.repository.getContaByDocumento(Mockito.anyString())).thenReturn(this.conta);
 
         Assert.assertThat(this.servico.getDocumento("01324596"), instanceOf(Conta.class));
+    }
+
+    @Test
+    public void getConta_metodo_deve_chamar_getContaByDocumento_metodo() {
+        ContaCorrente cConta = Mockito.mock(ContaCorrente.class);
+        when(this.repository.getContaByDocumento(Mockito.anyString())).thenReturn(cConta);
+        this.servico.getDocumento("01324596");
+
+        Mockito.verify(this.repository).getContaByDocumento(Mockito.anyString());
     }
 
     @DisplayName("depositar metodo deve retornar instancia BigDecimal")

@@ -13,12 +13,13 @@ import java.math.BigDecimal;
 public class ContaServico {
 
     private ContaRepository repository;
+    private FuncionarioServico servico;
 
     public Conta criar() { // TODO: DESENVOLVER
         return null;
-    }
+    } // TODO: DESENVOLVER
 
-    public Conta getDocumento(String documento) { // TODO: DESENVOLVER
+    public Conta getDocumento(String documento) {
         return this.repository.getContaByDocumento(documento);
     }
 
