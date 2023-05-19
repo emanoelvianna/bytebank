@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 public class ContaServico {
 
     private ContaRepository repository;
-    private FuncionarioServico servico;
+    private GerenteServico servico;
 
     public Conta criar() { // TODO: DESENVOLVER
         return null;

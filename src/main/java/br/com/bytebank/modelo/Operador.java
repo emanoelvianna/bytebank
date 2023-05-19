@@ -2,21 +2,27 @@ package br.com.bytebank.modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Generated;
 import lombok.experimental.SuperBuilder;
 
-import java.math.BigDecimal;
+import javax.persistence.*;
+import java.io.Serializable;
 
+@Entity
+@Table(name = "OPERADOR")
 @Data
 @SuperBuilder
+@Generated
 @AllArgsConstructor
-public class Operador extends Funcionario {
+public class Operador extends Funcionario implements Serializable {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "OID_OPERADOR")
+    private Long id;
+
+    @Column(name = "N_CAIXA", length = 10, nullable = false)
     private Integer nCaixa;
-
-    public Operador(String nome, String documento, BigDecimal salario, Integer nCaixa) {
-        super(nome, documento, salario);
-        this.nCaixa = nCaixa;
-    }
 
     @Override
     public int compareTo(Funcionario funcionario) {

@@ -10,14 +10,12 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -33,7 +31,14 @@ public class ContaServicoTest {
 
     @Before
     public void configuracao() {
-        this.gerente = new Gerente("Marcos Silva", "01324596", new BigDecimal(5000), "laranja123");
+        this.gerente = Gerente
+                .builder()
+                .nome("Marcos Silva")
+                .documento("01324596")
+                .salario(new BigDecimal(5000))
+                .senha("laranja123")
+                .build();
+
         this.cliente = new Cliente("Emanoel Vianna",
                 "01324596",
                 LocalDate.of(1993, 01, 01),
