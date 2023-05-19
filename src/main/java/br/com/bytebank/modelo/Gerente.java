@@ -2,21 +2,27 @@ package br.com.bytebank.modelo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Generated;
 import lombok.experimental.SuperBuilder;
 
-import java.math.BigDecimal;
+import javax.persistence.*;
+import java.io.Serializable;
 
+@Entity
+@Table(name = "GERENTE")
 @Data
 @SuperBuilder
+@Generated
 @AllArgsConstructor
-public class Gerente extends Funcionario implements Autenticavel {
+public class Gerente extends Funcionario implements Autenticavel, Serializable {
 
+    @Id
+    @GeneratedValue
+    @Column(name = "OID_GERENTE")
+    private Long id;
+
+    @Column(name = "SENHA", length = 20, nullable = false)
     private String senha;
-
-    public Gerente(String nome, String documento, BigDecimal salario, String senha) {
-        super(nome, documento, salario);
-        this.senha = senha;
-    }
 
     @Override
     public Boolean autentica(String senha) {

@@ -12,4 +12,6 @@ public class Credito {
     private BigDecimal margem;
     private BigDecimal valor;
 
+    // TODO: DEFINIR RELAÇÃO COM O CLIENTE
+
 }

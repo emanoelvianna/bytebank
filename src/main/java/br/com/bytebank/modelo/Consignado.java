@@ -26,4 +26,6 @@ public class Consignado {
     @Column(name = "EMPREGADOR", length = 20, nullable = false)
     private String empregador;
 
+    // TODO: DEFINIR RELAÇÃO COM O CLIENTE
+
 }

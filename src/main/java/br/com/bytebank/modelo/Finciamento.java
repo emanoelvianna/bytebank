@@ -12,4 +12,6 @@ public class Finciamento {
     private BigDecimal margem;
     private BigDecimal valor;
 
+    // TODO: DEFINIR RELAÇÃO COM O CLIENTE
+
 }
