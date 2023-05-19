@@ -1,5 +1,6 @@
 package br.com.bytebank.modelo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "CLIENTE")
 @Data
+@AllArgsConstructor
 public class Cliente implements Autenticavel, Comparable<Cliente> {
 
     @Id
@@ -33,14 +35,6 @@ public class Cliente implements Autenticavel, Comparable<Cliente> {
     @Column(name = "SENHA", length = 20, nullable = false)
     private String senha;
 
-    public Cliente(String nome, String documento, LocalDate dtNascimento, String endereco, String email, String senha) {
-        this.nome = nome;
-        this.documento = documento;
-        this.dtNascimento = dtNascimento;
-        this.endereco = endereco;
-        this.email = email;
-        this.senha = senha;
-    }
 
     @Override
     public Boolean autentica(String senha) {
