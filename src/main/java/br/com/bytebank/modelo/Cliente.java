@@ -33,9 +33,6 @@ public class Cliente implements Autenticavel, Comparable<Cliente> {
     @Column(name = "SENHA", length = 20, nullable = false)
     private String senha;
 
-    //@OneToMany(fetch = FetchType.LAZY) TODO: RESOLVER
-    //private List<Consignado> produtos;
-
     public Cliente(String nome, String documento, LocalDate dtNascimento, String endereco, String email, String senha) {
         this.nome = nome;
         this.documento = documento;
