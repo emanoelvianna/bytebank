@@ -1,41 +1,47 @@
 package br.com.bytebank.servico;
 
 import br.com.bytebank.modelo.Cliente;
+import br.com.bytebank.repository.ClienteRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
 public class ClienteServico {
 
-    private List<Cliente> clientes;
+    private ClienteRepository repository;
 
-    public ClienteServico() {
-        this.clientes = new ArrayList<>();
+    public ClienteServico(ClienteRepository repository) {
+        this.repository = repository;
+        this.criar(null); // TODO: REMOVER
     }
 
-    public Boolean adicionar(Cliente cliente) {
-        return this.clientes.add(cliente);
-    }
+    public Cliente criar(Cliente cliente) {
+        Cliente outroCliente = Cliente
+                .builder()
+                .nome("Emanoel Vianna")
+                .documento("870.491.550-04")
+                .dtNascimento(LocalDate.of(1993, 01, 22))
+                .email("emanoel@gmail.com")
+                .endereco("69919-834")
+                .senha("laranja123")
+                .build();
 
-    public List<Cliente> listar() {
-        return this.clientes;
-    }
-
-    public List<Cliente> listarByDtNascimento() {
-        List<Cliente> copia = new ArrayList<>(this.clientes);
-        Collections.sort(copia);
-        return copia;
+        return this.repository.save(outroCliente);
     }
 
     public Cliente getCliente(String documento) {
-        return this.clientes
-                .stream()
-                .filter(cliente -> cliente.getDocumento().equals(documento))
-                .findFirst()
-                .orElse(null);
+        return this.repository.getClienteByDocumento(documento);
+    }
+
+    public List<Cliente> getAllClientes() {
+        return this.repository.findAll();
+    }
+
+    public List<Cliente> listarByDtNascimento() {
+        return this.repository.listarByDtNascimento();
     }
 
 }

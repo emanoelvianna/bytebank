@@ -9,25 +9,22 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "CONSIGNADO")
+@Table(name = "FINANCIAMENTO")
 @Data
 @Builder
 @AllArgsConstructor
-public class Consignado implements Serializable {
+public class Financiamento implements Serializable {
 
     @Id
     @GeneratedValue
-    @Column(name = "OID_CONSIGNADO")
+    @Column(name = "OID_FINANCIAMENTO")
     private Long id;
 
-    @Column(name = "MARGEM", length = 35, precision = 2, nullable = false)
+    @Column(name = "MARGEM", length = 38, precision = 2, nullable = false)
     private BigDecimal margem;
 
-    @Column(name = "VALOR", length = 35, precision = 2, nullable = false)
+    @Column(name = "VLR_FINANCIAMENTO", length = 38, precision = 2, nullable = false)
     private BigDecimal valor;
-
-    @Column(name = "EMPREGADOR", length = 20, nullable = false)
-    private String empregador;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "OID_CLIENTE", referencedColumnName = "OID_CLIENTE", nullable = false)

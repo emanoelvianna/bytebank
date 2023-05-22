@@ -9,11 +9,13 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 
 @Service
-@AllArgsConstructor
 public class ContaServico {
 
     private ContaRepository repository;
-    private GerenteServico servico;
+
+    public ContaServico(ContaRepository repository) {
+        this.repository = repository;
+    }
 
     public Conta criar() { // TODO: DESENVOLVER
         return null;

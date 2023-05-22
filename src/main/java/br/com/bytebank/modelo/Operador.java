@@ -16,11 +16,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Operador extends Funcionario implements Serializable {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "OID_OPERADOR")
-    private Long id;
-
     @Column(name = "N_CAIXA", length = 10, nullable = false)
     private Integer nCaixa;
 

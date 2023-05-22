@@ -45,7 +45,13 @@ public class ContaServicoTest {
                 "Rua. Teste 1",
                 "emanoel@gmail",
                 "laranja123");
-        this.conta = new ContaCorrente(this.cliente);
+        this.conta = ContaCorrente
+                .builder()
+                .id(1L)
+                .cliente(this.cliente)
+                .dtCriacao(LocalDate.now())
+                .saldo(new BigDecimal(100))
+                .build();
     }
 
     @Test
@@ -73,6 +79,13 @@ public class ContaServicoTest {
     @DisplayName("depositar metodo deve despositar valor na conta quando chamado")
     @Test
     public void depositar_metodo_deve_despositar_valor_quando_chamado() {
+        this.conta = ContaCorrente
+                .builder()
+                .id(1L)
+                .cliente(this.cliente)
+                .dtCriacao(LocalDate.now())
+                .saldo(BigDecimal.ZERO)
+                .build();
         this.servico.depositar(this.gerente, this.conta, new BigDecimal(100));
 
         Assert.assertTrue(this.conta.getSaldo().equals(new BigDecimal(100)));
@@ -87,6 +100,13 @@ public class ContaServicoTest {
     @DisplayName("scar metodo deve despositar valor na conta quando chamado")
     @Test
     public void sacar_metodo_deve_sacar_valor_quando_chamado() {
+        this.conta = ContaCorrente
+                .builder()
+                .id(1L)
+                .cliente(this.cliente)
+                .dtCriacao(LocalDate.now())
+                .saldo(BigDecimal.ZERO)
+                .build();
         this.servico.depositar(this.gerente, this.conta, new BigDecimal(100));
         this.servico.sacar(this.gerente, this.conta, new BigDecimal(50));
 

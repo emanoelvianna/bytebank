@@ -13,12 +13,9 @@ import java.util.List;
 public class GerenteServico {
 
     private GerenteRepository repository;
-    private List<Funcionario> funcionarios;
 
     public GerenteServico(GerenteRepository repository) {
         this.repository = repository;
-        this.funcionarios = new ArrayList<>();
-
         this.criar(null); // TODO: REMOVER
     }
 

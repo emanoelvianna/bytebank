@@ -5,6 +5,6 @@ import org.springframework.stereotype.Component;
 @Component
 public interface Autenticavel {
 
-    public Boolean autentica(String senha);
+    Boolean autentica(String senha);
 
 }

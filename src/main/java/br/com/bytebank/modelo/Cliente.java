@@ -1,5 +1,7 @@
 package br.com.bytebank.modelo;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,6 +10,8 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "CLIENTE")
 @Data
+@Builder
+@AllArgsConstructor
 public class Cliente implements Autenticavel, Comparable<Cliente> {
 
     @Id

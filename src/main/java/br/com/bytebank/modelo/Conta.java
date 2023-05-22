@@ -6,16 +6,17 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "CONTA")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @Data
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
-public abstract class Conta {
+public abstract class Conta implements Serializable {
 
     @Id
     @GeneratedValue

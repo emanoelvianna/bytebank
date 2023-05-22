@@ -16,11 +16,6 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class Gerente extends Funcionario implements Autenticavel, Serializable {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "OID_GERENTE")
-    private Long id;
-
     @Column(name = "SENHA", length = 20, nullable = false)
     private String senha;
 
