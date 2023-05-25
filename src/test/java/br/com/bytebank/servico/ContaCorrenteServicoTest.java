@@ -1,7 +1,10 @@
 package br.com.bytebank.servico;
 
+import br.com.bytebank.dto.ContaDTO;
+import br.com.bytebank.mapper.ContaCorrenteMapper;
 import br.com.bytebank.modelo.*;
-import br.com.bytebank.repository.ContaRepository;
+import br.com.bytebank.repository.ClienteRepository;
+import br.com.bytebank.repository.ContaCorrenteRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,14 +22,19 @@ import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ContaServicoTest {
+public class ContaCorrenteServicoTest {
 
     @InjectMocks
-    private ContaServico servico;
+    private ContaCorrenteServico servico;
     @Mock
-    private ContaRepository repository;
+    private ContaCorrenteRepository repository;
+    @Mock
+    private ClienteRepository clienteRepository;
+    @Mock
+    private ContaCorrenteMapper mapper;
+
     private Autenticavel gerente;
-    private Conta conta;
+    private ContaCorrente conta;
     private Cliente cliente;
 
     @Before
@@ -45,6 +53,7 @@ public class ContaServicoTest {
                 "Rua. Teste 1",
                 "emanoel@gmail",
                 "laranja123");
+
         this.conta = ContaCorrente
                 .builder()
                 .id(1L)
@@ -58,14 +67,17 @@ public class ContaServicoTest {
     public void getConta_metodo_deve_retornar_conta_quando_cliente_existir() {
         when(this.repository.getContaByDocumento(Mockito.anyString())).thenReturn(this.conta);
 
-        Assert.assertThat(this.servico.getDocumento("01324596"), instanceOf(Conta.class));
+        Assert.assertThat(this.servico.getContaByDocumento("01324596"), instanceOf(Conta.class));
     }
 
     @Test
     public void getConta_metodo_deve_chamar_getContaByDocumento_metodo() {
         ContaCorrente cConta = Mockito.mock(ContaCorrente.class);
-        when(this.repository.getContaByDocumento(Mockito.anyString())).thenReturn(cConta);
-        this.servico.getDocumento("01324596");
+        ContaDTO dto = ContaDTO.builder().build();
+        when(this.repository.getContaByDocumento("01324596")).thenReturn(cConta);
+        when(this.mapper.toDTO(cConta)).thenReturn(dto);
+
+        this.servico.getContaByDocumento("01324596");
 
         Mockito.verify(this.repository).getContaByDocumento(Mockito.anyString());
     }

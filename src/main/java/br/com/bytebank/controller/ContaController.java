@@ -1,28 +1,27 @@
 package br.com.bytebank.controller;
 
+import br.com.bytebank.dto.ContaDTO;
 import br.com.bytebank.modelo.Conta;
-import br.com.bytebank.servico.ContaServico;
+import br.com.bytebank.servico.ContaCorrenteServico;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @AllArgsConstructor
-@RequestMapping("/conta")
+@RequestMapping("/conta-corrente")
 public class ContaController {
 
-    private ContaServico servico;
+    private ContaCorrenteServico servico;
 
     @PostMapping
-    public Conta criarConta() {
-        return this.servico.criar();
+    public ResponseEntity<ContaDTO> criarConta(@RequestHeader(name = "documento", defaultValue = "") String documento, @RequestBody ContaDTO contaDTO) {
+        return ResponseEntity.ok().body(this.servico.criar(documento, contaDTO));
     }
 
     @GetMapping
-    public Conta getContaByDocumento() {
-        return null;
+    public ResponseEntity<ContaDTO> getContaByDocumento(@RequestHeader(name = "documento", defaultValue = "") String documento) {
+        return ResponseEntity.ok().body(this.servico.getContaByDocumento(documento));
     }
 
 }

@@ -16,9 +16,4 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class ContaCorrente extends Conta implements Serializable {
 
-    @Id
-    @GeneratedValue
-    @Column(name = "OID_CCORRENTE")
-    private Long id;
-
 }
