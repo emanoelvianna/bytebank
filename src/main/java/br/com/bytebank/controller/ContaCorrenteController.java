@@ -1,7 +1,6 @@
 package br.com.bytebank.controller;
 
 import br.com.bytebank.dto.ContaDTO;
-import br.com.bytebank.modelo.Conta;
 import br.com.bytebank.servico.ContaCorrenteServico;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/conta-corrente")
-public class ContaController {
+public class ContaCorrenteController {
 
     private ContaCorrenteServico servico;
 

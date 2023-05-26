@@ -61,21 +61,22 @@ public class ContaCorrenteServicoTest {
                 .dtCriacao(LocalDate.now())
                 .saldo(new BigDecimal(100))
                 .build();
+
+        ContaDTO contaDTO = ContaDTO.builder().build();
+        when(this.mapper.toDTO(Mockito.any())).thenReturn(contaDTO);
     }
 
     @Test
-    public void getConta_metodo_deve_retornar_conta_quando_cliente_existir() {
+    public void getContaByDocumento_metodo_deve_retornar_conta_quando_cliente_existir() {
         when(this.repository.getContaByDocumento(Mockito.anyString())).thenReturn(this.conta);
 
-        Assert.assertThat(this.servico.getContaByDocumento("01324596"), instanceOf(Conta.class));
+        Assert.assertThat(this.servico.getContaByDocumento("01324596"), instanceOf(ContaDTO.class));
     }
 
     @Test
-    public void getConta_metodo_deve_chamar_getContaByDocumento_metodo() {
+    public void getContaByDocumento_metodo_deve_chamar_getContaByDocumento_metodo() {
         ContaCorrente cConta = Mockito.mock(ContaCorrente.class);
-        ContaDTO dto = ContaDTO.builder().build();
         when(this.repository.getContaByDocumento("01324596")).thenReturn(cConta);
-        when(this.mapper.toDTO(cConta)).thenReturn(dto);
 
         this.servico.getContaByDocumento("01324596");
 

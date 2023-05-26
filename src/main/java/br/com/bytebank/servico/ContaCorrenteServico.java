@@ -19,8 +19,10 @@ public class ContaCorrenteServico {
     private ClienteRepository clienteRepository;
     private ContaCorrenteMapper mapper;
 
-    public ContaCorrenteServico(ContaCorrenteRepository contaCorrenteRepository) {
+    public ContaCorrenteServico(ContaCorrenteRepository contaCorrenteRepository, ClienteRepository clienteRepository, ContaCorrenteMapper mapper) {
         this.contaCorrenteRepository = contaCorrenteRepository;
+        this.clienteRepository = clienteRepository;
+        this.mapper = mapper;
     }
 
     public ContaDTO criar(String documento, ContaDTO contaDTO) {
