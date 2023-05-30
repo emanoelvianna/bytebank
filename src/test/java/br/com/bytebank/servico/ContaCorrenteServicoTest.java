@@ -2,7 +2,10 @@ package br.com.bytebank.servico;
 
 import br.com.bytebank.dto.ContaDTO;
 import br.com.bytebank.mapper.ContaCorrenteMapper;
-import br.com.bytebank.modelo.*;
+import br.com.bytebank.modelo.Autenticavel;
+import br.com.bytebank.modelo.Cliente;
+import br.com.bytebank.modelo.ContaCorrente;
+import br.com.bytebank.modelo.Gerente;
 import br.com.bytebank.repository.ClienteRepository;
 import br.com.bytebank.repository.ContaCorrenteRepository;
 import org.junit.Assert;

@@ -30,7 +30,9 @@ public class ContaCorrenteServico {
         ContaCorrente contaCorrente = this.mapper.fromDTO(contaDTO);
         contaCorrente.setCliente(cliente);
 
-        return this.mapper.toDTO(this.contaCorrenteRepository.save(contaCorrente));
+        ContaCorrente ccSalvada = this.contaCorrenteRepository.save(contaCorrente);
+
+        return this.mapper.toDTO(ccSalvada);
     }
 
     public ContaDTO getContaByDocumento(String documento) {

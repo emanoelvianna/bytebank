@@ -1,5 +1,6 @@
 package br.com.bytebank.servico;
 
+import br.com.bytebank.dto.ClienteDTO;
 import br.com.bytebank.modelo.Cliente;
 import br.com.bytebank.repository.ClienteRepository;
 import org.junit.Before;
@@ -22,16 +23,19 @@ public class ClienteServicoTest {
     @Mock
     private ClienteRepository repository;
 
+    private ClienteDTO clienteDTO;
     private Cliente cliente;
 
     @Before
     public void configuracao() {
-        this.cliente = new Cliente("Emanoel Vianna",
-                "01324596",
-                LocalDate.of(1993, 01, 01),
-                "Rua. Teste 1",
-                "emanoel@gmail.com",
-                "laranja123");
+        this.clienteDTO = ClienteDTO.builder()
+                .nome("Emanoel Vianna")
+                .documento("01324596")
+                .dtNascimento(LocalDate.of(1993, 01, 01))
+                .endereco("Rua. Teste 1")
+                .email("emanoel@gmail.com")
+                .senha("laranja123")
+                .build();
     }
 
     @Ignore
@@ -39,10 +43,9 @@ public class ClienteServicoTest {
     @DisplayName("criar método deve chamar o conjunto de métodos esperados")
     public void criar_metodo_deve_chamar_metodos_esperados() {
         Mockito.when(this.repository.save(Mockito.any())).thenReturn(null);
-        this.servico.criar(this.cliente);
+        this.servico.criar(this.clienteDTO);
 
         Mockito.verify(this.repository).save(this.cliente);
     }
-
 
 }

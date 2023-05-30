@@ -1,43 +1,37 @@
 package br.com.bytebank.servico;
 
+import br.com.bytebank.dto.ClienteDTO;
+import br.com.bytebank.mapper.ClienteMapper;
 import br.com.bytebank.modelo.Cliente;
 import br.com.bytebank.repository.ClienteRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ClienteServico {
 
     private ClienteRepository repository;
+    private ClienteMapper mapper;
 
-    public ClienteServico(ClienteRepository repository) {
+    public ClienteServico(ClienteRepository repository, ClienteMapper mapper) {
         this.repository = repository;
-        this.criar(null); // TODO: REMOVER
+        this.mapper = mapper;
     }
 
-    public Cliente criar(Cliente cliente) {
-        Cliente outroCliente = Cliente
-                .builder()
-                .nome("Emanoel Vianna")
-                .documento("870.491.550-04")
-                .dtNascimento(LocalDate.of(1993, 01, 22))
-                .email("emanoel@gmail.com")
-                .endereco("69919-834")
-                .senha("laranja123")
-                .build();
-
-        return this.repository.save(outroCliente);
+    public ClienteDTO criar(ClienteDTO clienteDTO) {
+        Cliente cliente = this.mapper.fromDTO(clienteDTO);
+        return this.mapper.toDTO(this.repository.save(cliente));
     }
 
-    public Cliente getCliente(String documento) {
-        return this.repository.getClienteByDocumento(documento);
+    public ClienteDTO getClienteByDocumento(String documento) {
+        return this.mapper.toDTO(this.repository.getClienteByDocumento(documento));
     }
 
-    public List<Cliente> getAllClientes() {
-        return this.repository.findAll();
+    public List<ClienteDTO> findAllClientes() {
+        List<Cliente> clientes = this.repository.findAll();
+        return clientes.stream().map(mapper::toDTO).collect(Collectors.toList());
     }
 
     public List<Cliente> listarByDtNascimento() {

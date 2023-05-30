@@ -1,9 +1,7 @@
 package br.com.bytebank.modelo;
 
-import br.com.bytebank.dto.ContaDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 

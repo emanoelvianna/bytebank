@@ -1,6 +1,5 @@
 package br.com.bytebank.repository;
 
-import br.com.bytebank.modelo.Conta;
 import br.com.bytebank.modelo.ContaCorrente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
