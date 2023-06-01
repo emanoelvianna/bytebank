@@ -3,6 +3,7 @@ package br.com.bytebank.modelo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Generated;
+import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.Column;
@@ -16,6 +17,7 @@ import java.io.Serializable;
 @SuperBuilder
 @Generated
 @AllArgsConstructor
+@NoArgsConstructor
 public class Gerente extends Funcionario implements Autenticavel, Serializable {
 
     @Column(name = "SENHA", length = 20, nullable = false)

@@ -1,43 +1,58 @@
 package br.com.bytebank.servico;
 
+import br.com.bytebank.dto.GerenteDTO;
+import br.com.bytebank.mapper.GerenteMapper;
 import br.com.bytebank.modelo.Gerente;
 import br.com.bytebank.repository.GerenteRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class GerenteServico {
 
     private GerenteRepository repository;
+    private GerenteMapper mapper;
 
-    public GerenteServico(GerenteRepository repository) {
+    public GerenteServico(GerenteRepository repository, GerenteMapper mapper) {
         this.repository = repository;
-        this.criar(null); // TODO: REMOVER
+        this.mapper = mapper;
     }
 
-    public void criar(Gerente gerente) {
-        Gerente outroGerente = Gerente
-                .builder()
-                .nome("Marcos Silva")
-                .documento("819.313.170-38")
-                .salario(new BigDecimal(8.00))
-                .senha("laranja123")
-                .build();
-        this.repository.save(outroGerente);
+    public GerenteDTO criar(GerenteDTO gerenteDTO) {
+        log.info("Executando criação do gerente nome: {}", gerenteDTO.getNome());
+        if(!gerenteDTO.getSenha().matches("^[a-zA-Z0-9]+$")) {
+            log.error("GerenteDTO nome: {}, senha: {}", gerenteDTO.getNome(), gerenteDTO.getSenha());
+            throw new RuntimeException("Gerente deve conter uma senha com letras e números"); // TODO: DEFINIR UMA EXCEÇÃO MAIS ESPESIFICA!
+        }
+        Gerente gerente = this.mapper.fromDTO(gerenteDTO);
+        Gerente gerenteCriado = this.repository.save(gerente);
+        log.info("Gerente {} foi criado com sucesso", gerenteCriado.getNome());
+        return this.mapper.toDTO(gerenteCriado);
     }
 
-    public Gerente getFuncionarioByDocumento(String documento) {
-        return this.repository.getGerenteByDocumento(documento);
+    public GerenteDTO getGerenteByDocumento(String documento) {
+        Gerente gerente = this.repository.getGerenteByDocumento(documento);
+        return this.mapper.toDTO(gerente);
     }
 
-    public List<Gerente> getAllFuncionariosBySalario() {
-        return this.repository.getAllGerentesBySalario();
+    public List<GerenteDTO> getAllGerentesBySalario() {
+        List<Gerente> gerentes = this.repository.getAllGerentesBySalario();
+        return gerentes.stream().map(this.mapper::toDTO).collect(Collectors.toList());
     }
 
-    public List<Gerente> listar() {
-        return this.repository.findAll();
+    public List<GerenteDTO> listar() {
+        List<Gerente> gerentes = this.repository.findAll();
+        return gerentes.stream().map(this.mapper::toDTO).collect(Collectors.toList());
+    }
+
+    public void deletar(Long idGerente) {
+        this.repository.deleteById(idGerente);
     }
 
 }

@@ -21,6 +21,10 @@ public class ClienteServico {
     }
 
     public ClienteDTO criar(ClienteDTO clienteDTO) {
+        Cliente emanoel = new Cliente();
+        emanoel.setNome(clienteDTO.getNome());
+
+
         Cliente cliente = this.mapper.fromDTO(clienteDTO);
         return this.mapper.toDTO(this.repository.save(cliente));
     }
