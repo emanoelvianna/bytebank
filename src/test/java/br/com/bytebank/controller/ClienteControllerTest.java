@@ -56,6 +56,7 @@ public class ClienteControllerTest {
         this.rest.exchange("/cliente", HttpMethod.POST, request, ClienteDTO.class);
 
         // TODO: ADICIONAR VERIFICAÇÕES
+        this.repository.getClienteByDocumento("090.772.710-74");
     }
 
 }
