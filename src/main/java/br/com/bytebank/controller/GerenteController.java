@@ -25,8 +25,8 @@ public class GerenteController {
     }
 
     @PutMapping
-    public void atualizarNome() {
-        // TODO: DESENVOLVER METODO PARA ATUALIZAR INFORMAÇÃO
+    public ResponseEntity<?> atualizarNome(@RequestBody GerenteDTO gerenteDTO) {
+        return ResponseEntity.ok(this.servico.atualizar(gerenteDTO));
     }
 
 }

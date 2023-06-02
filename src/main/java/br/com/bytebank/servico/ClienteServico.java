@@ -38,8 +38,9 @@ public class ClienteServico {
         return clientes.stream().map(mapper::toDTO).collect(Collectors.toList());
     }
 
-    public List<Cliente> listarByDtNascimento() {
-        return this.repository.listarByDtNascimento();
+    public List<ClienteDTO> findByDtNascimento() {
+        List<Cliente> clientes = this.repository.listarByDtNascimento();
+        return clientes.stream().map(mapper::toDTO).collect(Collectors.toList());
     }
 
 }

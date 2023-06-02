@@ -22,10 +22,14 @@ public class ClienteController {
     public ResponseEntity<ClienteDTO> criar(@RequestBody ClienteDTO clienteDTO) {
         return ResponseEntity.ok().body(this.servico.criar(clienteDTO));
     }
-
     @GetMapping
     public ResponseEntity<List<ClienteDTO>> findAllClientes() {
-        return ResponseEntity.ok().body(this.servico.findAllClientes());
+        return ResponseEntity.ok(this.servico.findAllClientes());
+    }
+
+    @GetMapping("/data-nascimento")
+    public ResponseEntity<List<ClienteDTO>> findByDtNascimento() {
+        return ResponseEntity.ok(this.servico.findByDtNascimento());
     }
 
     @GetMapping("/documento")

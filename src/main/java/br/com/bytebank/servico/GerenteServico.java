@@ -55,4 +55,11 @@ public class GerenteServico {
         this.repository.deleteById(idGerente);
     }
 
+    public GerenteDTO atualizar(GerenteDTO gerenteDTO) {
+        Gerente gerenteDB = this.repository.getGerenteByDocumento(gerenteDTO.getDocumento());
+        Gerente gerente = this.mapper.fromDTO(gerenteDTO);
+        gerente.setId(gerenteDB.getId());
+        return this.mapper.toDTO(this.repository.save(gerente));
+    }
+
 }

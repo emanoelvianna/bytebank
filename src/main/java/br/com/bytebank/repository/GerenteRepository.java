@@ -11,10 +11,10 @@ import java.util.List;
 @Repository
 public interface GerenteRepository extends JpaRepository<Gerente, Long> {
 
-    @Query("FROM Funcionario F WHERE F.documento = :documento")
+    @Query("SELECT g FROM Gerente g WHERE g.documento = :documento")
     Gerente getGerenteByDocumento(@Param("documento") String documento);
 
-    @Query("FROM Funcionario F ORDER BY F.salario DESC")
+    @Query("SELECT g FROM Gerente g ORDER BY g.salario DESC")
     List<Gerente> getAllGerentesBySalario();
 
 }
