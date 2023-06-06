@@ -1,6 +1,7 @@
 package br.com.bytebank.servico;
 
 import br.com.bytebank.dto.ContaDTO;
+import br.com.bytebank.exception.NotFoundException;
 import br.com.bytebank.mapper.ContaCorrenteMapper;
 import br.com.bytebank.modelo.Autenticavel;
 import br.com.bytebank.modelo.Cliente;
@@ -26,7 +27,10 @@ public class ContaCorrenteServico {
     }
 
     public ContaDTO criar(String documento, ContaDTO contaDTO) {
-        Cliente cliente = this.clienteRepository.getClienteByDocumento(documento);
+        Cliente cliente = this.clienteRepository.getClienteByDocumento(documento).orElseThrow(() -> {
+            String mensagem = String.format("Cliente com documento: %s não foi encontrado.");
+            return new NotFoundException(mensagem);
+        });
         ContaCorrente contaCorrente = this.mapper.fromDTO(contaDTO);
         contaCorrente.setCliente(cliente);
 

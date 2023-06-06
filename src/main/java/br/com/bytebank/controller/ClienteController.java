@@ -22,6 +22,7 @@ public class ClienteController {
     public ResponseEntity<ClienteDTO> criar(@RequestBody ClienteDTO clienteDTO) {
         return ResponseEntity.ok().body(this.servico.criar(clienteDTO));
     }
+
     @GetMapping
     public ResponseEntity<List<ClienteDTO>> findAllClientes() {
         return ResponseEntity.ok(this.servico.findAllClientes());
@@ -35,6 +36,12 @@ public class ClienteController {
     @GetMapping("/documento")
     public ResponseEntity<ClienteDTO> getClienteByDocumento(@RequestHeader(name = "documento") String documento) {
         return ResponseEntity.ok().body(this.servico.getClienteByDocumento(documento));
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Void> deletar(@RequestHeader(name = "documento") String documento) {
+        this.servico.deletar(documento);
+        return ResponseEntity.ok().build();
     }
 
 }

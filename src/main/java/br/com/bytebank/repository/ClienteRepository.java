@@ -7,12 +7,13 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
     @Query("FROM Cliente C WHERE C.documento = :documento")
-    Cliente getClienteByDocumento(@Param("documento") String documento);
+    Optional<Cliente> getClienteByDocumento(@Param("documento") String documento);
 
     @Query("FROM Cliente C ORDER BY C.dtNascimento DESC")
     List<Cliente> listarByDtNascimento();

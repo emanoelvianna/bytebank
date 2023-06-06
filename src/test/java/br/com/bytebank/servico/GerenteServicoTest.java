@@ -2,7 +2,6 @@ package br.com.bytebank.servico;
 
 import br.com.bytebank.dto.GerenteDTO;
 import br.com.bytebank.mapper.GerenteMapper;
-import br.com.bytebank.modelo.Funcionario;
 import br.com.bytebank.modelo.Gerente;
 import br.com.bytebank.repository.GerenteRepository;
 import org.junit.Assert;

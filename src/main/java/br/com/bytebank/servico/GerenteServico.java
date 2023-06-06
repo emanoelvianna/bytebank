@@ -7,9 +7,7 @@ import br.com.bytebank.repository.GerenteRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.List;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -26,7 +24,7 @@ public class GerenteServico {
 
     public GerenteDTO criar(GerenteDTO gerenteDTO) {
         log.info("Executando criação do gerente nome: {}", gerenteDTO.getNome());
-        if(!gerenteDTO.getSenha().matches("^[a-zA-Z0-9]+$")) {
+        if (!gerenteDTO.getSenha().matches("^[a-zA-Z0-9]+$")) {
             log.error("GerenteDTO nome: {}, senha: {}", gerenteDTO.getNome(), gerenteDTO.getSenha());
             throw new RuntimeException("Gerente deve conter uma senha com letras e números"); // TODO: DEFINIR UMA EXCEÇÃO MAIS ESPESIFICA!
         }
